@@ -192,6 +192,3 @@ Make sure to follow best practices for version control, testing, and documentati
 - Exposed insights via API with Pydantic validation
 - Orchestrated the full flow with Dagster and daily scheduler
 
----
-## Project Status
-Final submission merged. Checkout the commit history [here](https://github.com/nuhaminae/Shipping-a-Data-Product-From-Raw-Telegram-Data-to-an-Analytical-API/commits?author=nuhaminae). 
