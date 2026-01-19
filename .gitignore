@@ -1,0 +1,38 @@
+# Virtual env
+.televenv
+
+# Cache
+__pycache__/
+.pytest_cache/
+.vscode
+
+# DVC
+/.dvc/tmp
+/.dvc/cache
+
+# Scraped data
+scraper/
+
+# Secrets and artifacts
+.env
+logs/
+
+# Python artifacts
+wheelhouse/
+
+# JSON files
+*.json
+
+# dbt artifacts
+target/
+dbt_packages/
+
+# Images and test
+data/images/
+test/
+
+# YOLO artifacts
+*.pt
+
+# Dagster artifacts
+.tmp_dagster_home_*

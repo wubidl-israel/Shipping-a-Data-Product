@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: fct_messages
+    description: "Fact table with one row per Telegram message, joined to channel and date dimensions"
+    columns:
+      - name: message_id
+        description: "Unique identifier for the message"
+        tests:
+          - not_null
+          - unique
+
+      - name: channel_id
+        description: "Foreign key to dim_channels"
+        tests:
+          - not_null
+
+      - name: date_day
+        description: "Foreign key to dim_dates"
+        tests:
+          - not_null
+
+      - name: text
+        description: "Message text content"
+
+      - name: views
+        description: "Number of views for the message"
+        tests:
+          - not_null
+
+      - name: media_type
+        description: "Media type (text, image, etc.)"
+
+      - name: message_length
+        description: "Character count of the text field"
+
+      - name: has_image
+        description: "Boolean flag if the message contains an image"
+        
+      - name: channel_slug
+        description: "Slugified channel handle for use in filenames and detection joins"
+        tests:
+          - not_null
+
+    meta:
+      joins:
+        - name: dim_channels
+          target_column: channel_id
+          source_column: channel_slug
+        - name: dim_dates
+          target_column: date_day
+          source_column: posted_at
+
+    tags: ["mart", "telegram", "messages", "image_integrity"]

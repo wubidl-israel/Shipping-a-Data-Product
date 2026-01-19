@@ -1,0 +1,5 @@
+outs:
+- md5: f8744c65c5db53726c6e1890e67e6ca9
+  size: 16231976
+  hash: md5
+  path: fct_image_detections.json

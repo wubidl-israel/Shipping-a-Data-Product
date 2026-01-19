@@ -1,0 +1,5 @@
+outs:
+- md5: d60811b12eb2718722d4b0822bdf57c3
+  size: 20735729
+  hash: md5
+  path: fct_image_detections_yolov8m.json

@@ -1,0 +1,7 @@
+# Sets environment-level config
+python_logs:
+  python_log_level: DEBUG
+
+telemetry:
+  enabled: false
+

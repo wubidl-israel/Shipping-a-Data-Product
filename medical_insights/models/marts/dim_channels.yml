@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "Dimension table for Telegram channels. One row per unique channel."
+    columns:
+      - name: channel_id
+        description: "Surrogate key assigned to each channel"
+        tests:
+          - not_null
+          - unique
+
+      - name: channel_username
+        description: "Unique Telegram handle of the channel"
+        tests:
+          - not_null
+
+      - name: channel_title
+        description: "Display name of the Telegram channel"
+      
+      - name: channel_slug
+        description: "Slug version of channel username for clean joins and filenames"
+        tests:
+          - not_null
+

@@ -1,0 +1,38 @@
+version: 2
+
+sources:
+  - name: enriched
+    schema: enriched
+    tables:
+      - name: fct_image_detections
+
+models:
+  - name: fct_image_detections
+    description: "Fact table with one row per image detection, joined to message dimensions"
+
+    columns:
+      - name: message_id
+        description: "Foreign key to fct_messages"
+        tests:
+          - not_null
+
+      - name: object_class
+        description: "Detected object type from YOLOv8 (e.g. pill, person)"
+        tests:
+          - not_null
+
+      - name: confidence_score
+        description: "YOLOv8 confidence score for the detection"
+        tests:
+          - not_null
+
+      - name: bbox
+        description: "Bounding box coordinates of the detected object"
+
+    meta:
+      joins:
+        - name: fct_messages
+          target_column: message_id
+          source_column: message_id
+
+    tags: ["mart", "telegram", "image_detections"]

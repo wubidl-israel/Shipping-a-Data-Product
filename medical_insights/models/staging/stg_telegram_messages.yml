@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_telegram_messages
+    description: "Staging model for Telegram messages, cleaned and typed from raw.telegram_messages"
+    columns:
+      - name: message_id
+        description: "Composite unique ID generated from cleaned channel username and original message ID"
+        tests:
+          - not_null
+          - unique
+
+      - name: channel_title
+        description: "Display name of the Telegram channel"
+
+      - name: channel_username
+        description: "Raw Telegram handle, starting with '@'"
+        tests:
+          - not_null
+
+      - name: text
+        description: "Message body content, may be null for media-only messages"
+
+      - name: posted_at
+        description: "Normalised timestamp when the message was posted"
+        tests:
+          - not_null
+
+      - name: views
+        description: "Number of views the message received"
+
+      - name: media_type
+        description: "Media attached to the message, such as 'photo' or 'document'"
+
+      - name: message_length
+        description: "Character count of the message's text content"
+
+      - name: has_image
+        description: "Boolean flag indicating if the message includes an image"
+      
+      - name: channel_slug
+        description: "Clean version of the channel username (no '@'), used for joins and filenames"
+        tests:
+          - not_null
+

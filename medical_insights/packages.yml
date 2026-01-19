@@ -1,0 +1,5 @@
+# This file is part of the medical_insights project.
+# It defines the project's metadata and configurations for dbt (data build tool).
+packages:
+  - package: dbt-labs/dbt_utils
+    version: [">=0.8.0", "<1.0.0"]

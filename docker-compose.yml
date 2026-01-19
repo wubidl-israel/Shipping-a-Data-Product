@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backend
+  
+  app:
+    build: .
+    container_name: telegram-app
+    env_file:
+      - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+  
+  dagster:
+    build: 
+      context: ./dagster
+      dockerfile: Dockerfile
+    container_name: dagster
+    ports:
+      #- "3000:3000"
+      - "5055:3000"
+    volumes:
+      - ./dagster:/opt/dagster/app
+    depends_on:
+      - db
+    networks:
+      - backend
+
+volumes:
+  pgdata:
+
+networks:
+  backend:

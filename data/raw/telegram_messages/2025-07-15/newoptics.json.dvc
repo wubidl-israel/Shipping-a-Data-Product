@@ -1,0 +1,5 @@
+outs:
+- md5: 184a06689c9f518f0853b2d217702059
+  size: 1043910
+  hash: md5
+  path: newoptics.json

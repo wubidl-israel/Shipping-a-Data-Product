@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_dates
+    description: "Date dimension table with one row per day extracted from posted Telegram messages"
+    columns:
+      - name: date_day
+        description: "The base date (day precision) for each distinct message timestamp"
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        description: "Year extracted from date_day"
+
+      - name: month
+        description: "Month extracted from date_day"
+
+      - name: day
+        description: "Day extracted from date_day"
+
+      - name: week
+        description: "ISO week number extracted from date_day"
+
+      - name: weekday
+        description: "Day of the week extracted from date_day (0=Sunday, 6=Saturday)"
+
